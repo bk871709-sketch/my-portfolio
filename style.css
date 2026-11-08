@@ -6,10 +6,51 @@ body {
 }
 
 header {
-  background: #2c3e50;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364, #6a3093);
+  background-size: 300% 300%;
+  animation: gradientMove 12s ease infinite;
   color: white;
   text-align: center;
   padding: 60px 20px;
+}
+
+header::before,
+header::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.45;
+  z-index: 0;
+}
+
+header::before {
+  width: 260px;
+  height: 260px;
+  background: #00c6ff;
+  top: -80px;
+  left: -60px;
+}
+
+header::after {
+  width: 300px;
+  height: 300px;
+  background: #ff4ecd;
+  bottom: -120px;
+  right: -80px;
+}
+
+header > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 section {
@@ -28,7 +69,6 @@ a {
   color: #2980b9;
 }
 
-/* Theme button */
 #theme-btn {
   margin-top: 15px;
   padding: 10px 20px;
@@ -40,7 +80,6 @@ a {
   font-size: 16px;
 }
 
-/* Profile photo */
 .profile-pic {
   width: 150px;
   height: 150px;
@@ -48,6 +87,7 @@ a {
   object-fit: cover;
   object-position: 65% 40%;
   border: 4px solid white;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.35);
   margin-bottom: 15px;
   cursor: pointer;
   -webkit-touch-callout: none;
@@ -55,7 +95,6 @@ a {
   user-select: none;
 }
 
-/* Footer */
 footer {
   text-align: center;
   padding: 20px;
@@ -65,7 +104,6 @@ footer p {
   margin-top: 20px;
 }
 
-/* Social buttons in footer */
 .social-links {
   display: flex;
   flex-wrap: wrap;
@@ -101,7 +139,6 @@ footer p {
   background: #24292e;
 }
 
-/* Dark mode */
 body.dark {
   background: #121212;
   color: #eee;
@@ -123,7 +160,6 @@ body.dark .social-btn {
   color: white;
 }
 
-/* Welcome screen */
 #welcome {
   position: fixed;
   top: 0;
@@ -168,7 +204,6 @@ body.dark .social-btn {
   }
 }
 
-/* DP viewer (Instagram style) */
 #dp-viewer {
   position: fixed;
   top: 0;
