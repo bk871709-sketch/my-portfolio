@@ -26,7 +26,9 @@ h2 {
 
 a {
   color: #2980b9;
-}/* Button */
+}
+
+/* Theme button */
 #theme-btn {
   margin-top: 15px;
   padding: 10px 20px;
@@ -38,10 +40,65 @@ a {
   font-size: 16px;
 }
 
+/* Profile photo */
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 65% 40%;
+  border: 4px solid white;
+  margin-bottom: 15px;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 /* Footer */
 footer {
   text-align: center;
   padding: 20px;
+}
+
+footer p {
+  margin-top: 20px;
+}
+
+/* Social buttons in footer */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 25px;
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  transition: transform 0.2s ease;
+}
+
+.social-btn:hover {
+  transform: scale(1.05);
+}
+
+.social-btn.insta {
+  background: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
+}
+
+.social-btn.gmail {
+  background: #ea4335;
+}
+
+.social-btn.github {
+  background: #24292e;
 }
 
 /* Dark mode */
@@ -61,6 +118,11 @@ body.dark h2 {
 body.dark a {
   color: #85c1e9;
 }
+
+body.dark .social-btn {
+  color: white;
+}
+
 /* Welcome screen */
 #welcome {
   position: fixed;
@@ -87,7 +149,7 @@ body.dark a {
 #welcome p {
   font-size: 1.2rem;
   margin-top: 10px;
-  animation: fadeUp 0.4s ease;
+  animation: fadeUp 1.4s ease;
 }
 
 #welcome.hide {
@@ -104,4 +166,46 @@ body.dark a {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* DP viewer (Instagram style) */
+#dp-viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9998;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+#dp-viewer.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+#dp-viewer img {
+  width: min(80vw, 380px);
+  height: min(80vw, 380px);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 65% 40%;
+  border: 4px solid white;
+  transform: scale(0.6);
+  transition: transform 0.25s ease;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#dp-viewer.show img {
+  transform: scale(1);
 }
